@@ -1,10 +1,19 @@
 import os
+from pathlib import Path
 
+# parent_dir = '/Users/michellescott/Documents/Lambda/code_challenges/Advent-Of-Code/'
 
-directory = "testing4"
+years = 2015
 
-parent_dir = '/Users/michellescott/Documents/Lambda/practice_script'
+while years <= 2020:
 
-path = os.path.join(parent_dir, directory)
+    directory = str(years)
+    os.mkdir(directory)
 
-os.mkdir(path)
+    for days in range(1, 26):
+        sub_dir = f'day_{days}'
+        os.mkdir(os.path.join(directory, sub_dir))
+        Path(os.path.join(directory, sub_dir, "instructions.md")).touch()
+        Path(os.path.join(directory, sub_dir, "input.txt")).touch()
+        Path(os.path.join(directory, sub_dir, "day"+str(days)+".py")).touch()
+    years += 1
